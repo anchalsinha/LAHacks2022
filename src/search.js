@@ -1,4 +1,4 @@
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const Search = ({searchQuery, setQuery}) => {
     const history = useHistory();
@@ -13,7 +13,7 @@ const Search = ({searchQuery, setQuery}) => {
             method="get"
             autoComplete="off"
             onSubmit={onSubmit}
-            >
+        >
             <label htmlFor="header-search">
                 <span className="visually-hidden">
                     Search Field

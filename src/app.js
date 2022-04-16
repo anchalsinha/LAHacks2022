@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import './App.css';
+import './app.css';
 import Search from './search';
-import Announcer from './announcer';
+import Messenger from './msg';
 
 const fields = [
     { id: '1', name: 'Medical Devices' },
@@ -31,7 +31,7 @@ const App = () => {
     return (
         <Router>
             <div className="App">
-                <Announcer
+                <Messenger
                     message={`${filteredFields.length} fields`}
                 />
                 <Search
