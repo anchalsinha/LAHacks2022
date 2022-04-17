@@ -26,8 +26,7 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => {
                 id="header-search"
                 placeholder="Search Fields"
                 name="s"
-            />
-            <button type="submit">Search</button>
+            /><button type="submit">Search</button>
         </form>
     );
 };
