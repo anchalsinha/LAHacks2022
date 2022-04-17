@@ -56,6 +56,7 @@ const App = () => {
                 <Messenger
                     message={`${filteredFields.length} fields`}
                 />
+                
                 {/* <img src={logo} className="App-logo" alt="logo" /> */}
                 <Plot
                     data={[

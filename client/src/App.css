@@ -52,17 +52,30 @@ input {
   font-size: 24px;
   top:10px;
   left:10px;
+  border-radius: 50px;
+  border: 1px solid var(#BF307F);
 }
 button {
   position: absolute;
-  height: 39px;
   margin: 4px;
   padding: 4px;
-  font-size: 24px;
+  font-size: 20px;
   top:10px;
-  left:250px;
+  left:260px;
+  height: 39px;
+  width: 150px;
+  overflow: hidden;
+  background: transparent;
+  border: 1px solid var(#BF307F);
+  border-radius: 50px;
+  color: #BF307F;
+  text-transform: uppercase;
+  outline: none;
+  /* transform: translateY(50px); */
+  animation: slideUp .8s ease-in-out  forwards 1s;
 }
 .plot {
   z-index: -999;
   
 }
+
