@@ -1,14 +1,16 @@
 const express = require('express')
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 const app = express()
 
 // app.use(express.static("src"));
 
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, "src", "index.html"))
-// });
+
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`)
+});
+
+app.get('/app', (req, res) => {
+  res.send({express: 'EXPRESS BACKEND CONNECTED TO REACT'})
 });

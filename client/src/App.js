@@ -1,46 +1,48 @@
 import { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import logo from './logo.svg';
 import './App.css';
 import Search from './search';
-import Messenger from './msg';
+import Announcer from './announcer';
 
-const fields = [
-    { id: '1', name: 'Medical Devices' },
-    { id: '2', name: 'Medical Practice' },
-    { id: '3', name: 'Pharmaceuticals' },
-    { id: '4', name: 'Hospitals & Health Care' },
+const posts = [
+    { id: '1', name: 'This first post is about React' },
+    { id: '2', name: 'This next post is about Preact' },
+    { id: '3', name: 'We have yet another React post!' },
+    { id: '4', name: 'This is the fourth and final post' },
 ];
 
-const filterFields = (fields, query) => {
+const filterPosts = (posts, query) => {
     if (!query) {
-        return fields;
+        return posts;
     }
 
-    return fields.filter((field) => {
-        const fieldName = field.name.toLowerCase();
-        return fieldName.includes(query);
+    return posts.filter((post) => {
+        const postName = post.name.toLowerCase();
+        return postName.includes(query);
     });
 };
 
 const App = () => {
     const { search } = window.location;
-    const query = new URLSearchParams(search).get('search_field');
-    const [searchQuery, setQuery] = useState(query || '');
-    const filteredFields = filterFields(fields, searchQuery);
+    const query = new URLSearchParams(search).get('s');
+    const [searchQuery, setSearchQuery] = useState(query || '');
+    const filteredPosts = filterPosts(posts, searchQuery);
 
     return (
         <Router>
             <div className="App">
-                <Messenger
-                    message={`${filteredFields.length} fields`}
+                <Announcer
+                    message={`${filteredPosts.length} posts`}
                 />
+                <img src={logo} className="App-logo" alt="logo" />
                 <Search
                     searchQuery={searchQuery}
-                    setQuery={setQuery}
+                    setSearchQuery={setSearchQuery}
                 />
                 <ul>
-                    {filteredFields.map((field) => (
-                        <li key={field.id}>{field.name}</li>
+                    {filteredPosts.map((post) => (
+                        <li key={post.id}>{post.name}</li>
                     ))}
                 </ul>
             </div>

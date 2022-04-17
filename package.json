@@ -18,6 +18,7 @@
   "homepage": "https://github.com/anchalsinha/LAHacks2022#readme",
   "description": "",
   "dependencies": {
+    "@mui/material": "^5.6.1",
     "express": "^4.17.3"
   }
 }

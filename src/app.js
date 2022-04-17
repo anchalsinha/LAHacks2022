@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './app.css';
 import Search from './search';
-import Messenger from './msg';
+import Messenger from '../client/src/msg';
 
 const fields = [
     { id: '1', name: 'Medical Devices' },

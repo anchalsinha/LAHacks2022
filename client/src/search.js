@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-const Search = ({searchQuery, setQuery}) => {
+const SearchBar = ({ searchQuery, setSearchQuery }) => {
     const navigate = useNavigate();
     const onSubmit = (e) => {
         navigate(`?s=${searchQuery}`);
@@ -16,20 +16,20 @@ const Search = ({searchQuery, setQuery}) => {
         >
             <label htmlFor="header-search">
                 <span className="visually-hidden">
-                    Search Field
+                    Search blog posts
                 </span>
             </label>
             <input
                 value={searchQuery}
-                onInput={(e) => setQuery(e.target.value)}
+                onInput={(e) => setSearchQuery(e.target.value)}
                 type="text"
                 id="header-search"
-                placeholder="Search Bussiness Field"
-                name="search_field"
+                placeholder="Search blog posts"
+                name="s"
             />
             <button type="submit">Search</button>
         </form>
     );
 };
 
-export default Search;
+export default SearchBar;
