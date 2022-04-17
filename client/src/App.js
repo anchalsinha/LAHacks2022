@@ -57,7 +57,6 @@ const App = () => {
                     message={`${filteredFields.length} fields`}
                 />
                 {/* <img src={logo} className="App-logo" alt="logo" /> */}
-                <div class='plot'>
                 <Plot
                     data={[
                         {
@@ -74,7 +73,6 @@ const App = () => {
                     layout = {{mapbox: {style: 'light'}, style: "outdoors", width: width, height: height, margin: {t: 0, b: 0, l: 0, r: 0}}}
                     config = {{mapboxAccessToken: "pk.eyJ1IjoiYW5jaGFsc2luaGEiLCJhIjoiY2tuNWwwZW8xMDU5djJvcDd6OG9jb29vcSJ9.FbawMaKUirZV9t57sHHCog"}}
                 />
-                </div>
                 <Search
                     searchQuery={searchQuery}
                     setSearchQuery={setSearchQuery}
