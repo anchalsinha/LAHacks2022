@@ -1,22 +1,20 @@
 const express = require('express')
-const mysql = require('mysql')
+const sqlite3 = require('sqlite3')
 
 const port = process.env.PORT || 3000;
 
 const app = express()
 app.use(express.json())
 
-const db = mysql.createConnection({
-	host: "localhost",
-	user: "cs143",
-	password: "",
-	database: "class_db",
-});
+const db_path = 'data_full_v2.db';
 
-db.connect(function(err) {
-	if (err) throw err;
-	console.log("You're successfully connected to MySQL");
-});
+db = new sqlite3.Database(db_path, (err) => {
+  if (err) {
+    console.log('Could not connect to database', err)
+  } else {
+    console.log('Connected to database')
+  }
+})
 
 app.get('/latlong', (req, res) => {
   // request fields
@@ -26,12 +24,10 @@ app.get('/latlong', (req, res) => {
 
   industry_name = req.body.industry
 
-  db.query(`SELECT name, lat, lon FROM companies WHERE industry = ${industry_name}`, function(err, result, fields) {
+  db.all(`SELECT name, lat, lon FROM data_full_v2 WHERE industry = \"${industry_name}\"`, function(err, rows) {
     if (err) throw err;
-    console.log(result);
+    res.send(rows);
   })
-
-  res.send({ lat: [], lon: [] });
 });
 
 app.listen(port, () => {

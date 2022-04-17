@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import Plot from 'react-plotly.js';
 import logo from './logo.svg';
 import './App.css';
 import Search from './search';
@@ -39,6 +40,19 @@ const App = () => {
                 <Search
                     searchQuery={searchQuery}
                     setSearchQuery={setSearchQuery}
+                />
+                <Plot
+                    data={[
+                    {
+                        x: [1, 2, 3],
+                        y: [2, 6, 3],
+                        type: 'scatter',
+                        mode: 'lines+markers',
+                        marker: {color: 'red'},
+                    },
+                    {type: 'bar', x: [1, 2, 3], y: [2, 5, 3]},
+                    ]}
+                    layout={ {width: 320, height: 240, title: 'A Fancy Plot'} }
                 />
                 <ul>
                     {filteredFields.map((field) => (
