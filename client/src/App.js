@@ -28,6 +28,7 @@ const App = () => {
     const { search } = window.location;
     const query = new URLSearchParams(search).get('s');
     const [searchQuery, setSearchQuery] = useState(query || '');
+    const [pdlData, setPdlData] = useState('');
     const filteredFields = filterField(fields, searchQuery);
 
     return (
@@ -40,19 +41,20 @@ const App = () => {
                 <Search
                     searchQuery={searchQuery}
                     setSearchQuery={setSearchQuery}
+                    pdlData={pdlData}
+                    setPdlData={setPdlData}
                 />
                 <Plot
                     data={[
-                    {
-                        x: [1, 2, 3],
-                        y: [2, 6, 3],
-                        type: 'scatter',
-                        mode: 'lines+markers',
-                        marker: {color: 'red'},
-                    },
-                    {type: 'bar', x: [1, 2, 3], y: [2, 5, 3]},
+                        {
+                            type: 'scattergeo',
+                            mode: 'markers',
+                            // text: pdlData['names'],
+                            lat: pdlData['lat'],
+                            lon: pdlData['lon'],
+                        },
                     ]}
-                    layout={ {width: 320, height: 240, title: 'A Fancy Plot'} }
+                    layout={ {width: 3200, height: 2400, title: 'A Fancy Plot'} }
                 />
                 <ul>
                     {filteredFields.map((field) => (

@@ -1,7 +1,7 @@
 const express = require('express')
 const sqlite3 = require('sqlite3')
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 const app = express()
 app.use(express.json())
@@ -22,8 +22,8 @@ app.get('/latlong', (req, res) => {
   
   // return list of lat and list of long
 
-  industry_name = req.body.industry
-
+  industry_name = req.query.industry
+  
   db.all(`SELECT name, lat, lon FROM data_full_v2 WHERE industry = \"${industry_name}\"`, function(err, rows) {
     if (err) throw err;
     res.send(rows);
