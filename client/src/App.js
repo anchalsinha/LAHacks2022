@@ -53,14 +53,17 @@ const App = () => {
                 <Plot
                     data={[
                         {
-                            type: 'scattergeo',
+                            type: 'densitymapbox',
                             mode: 'markers',
                             // text: pdlData['names'],
                             lat: pdlData['lat'],
                             lon: pdlData['lon'],
+                            z: Array.from({length: 10}, () => Math.floor(Math.random() * 10)),
+                            hoverinfo: 'skip'
                         },
                     ]}
-                    // layout={ {width: 3200, height: 2400, title: 'A Fancy Plot'} }
+                    layout = {{mapbox: {style: 'light'}, style: "outdoors", margin: {t: 0, b: 0, l: 0, r: 0}}}
+                    config = {{mapboxAccessToken: "pk.eyJ1IjoiYW5jaGFsc2luaGEiLCJhIjoiY2tuNWwwZW8xMDU5djJvcDd6OG9jb29vcSJ9.FbawMaKUirZV9t57sHHCog"}}
                 />
                 <ul>
                     {filteredFields.map((field) => (
