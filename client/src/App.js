@@ -3,23 +3,23 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import Search from './search';
-import Announcer from './announcer';
+import Messenger from './messenger';
 
-const posts = [
-    { id: '1', name: 'This first post is about React' },
-    { id: '2', name: 'This next post is about Preact' },
-    { id: '3', name: 'We have yet another React post!' },
-    { id: '4', name: 'This is the fourth and final post' },
+const fields = [
+    { id: '1', name: 'Medical Devices' },
+    { id: '2', name: 'Medical Practice' },
+    { id: '3', name: 'Pharmaceuticals' },
+    { id: '4', name: 'Hospital & Wellness' },
 ];
 
-const filterPosts = (posts, query) => {
+const filterField = (fields, query) => {
     if (!query) {
-        return posts;
+        return fields;
     }
 
-    return posts.filter((post) => {
-        const postName = post.name.toLowerCase();
-        return postName.includes(query);
+    return fields.filter((field) => {
+        const fieldName = field.name.toLowerCase();
+        return fieldName.includes(query);
     });
 };
 
@@ -27,13 +27,13 @@ const App = () => {
     const { search } = window.location;
     const query = new URLSearchParams(search).get('s');
     const [searchQuery, setSearchQuery] = useState(query || '');
-    const filteredPosts = filterPosts(posts, searchQuery);
+    const filteredFields = filterField(fields, searchQuery);
 
     return (
         <Router>
             <div className="App">
-                <Announcer
-                    message={`${filteredPosts.length} posts`}
+                <Messenger
+                    message={`${filteredFields.length} fields`}
                 />
                 <img src={logo} className="App-logo" alt="logo" />
                 <Search
@@ -41,8 +41,8 @@ const App = () => {
                     setSearchQuery={setSearchQuery}
                 />
                 <ul>
-                    {filteredPosts.map((post) => (
-                        <li key={post.id}>{post.name}</li>
+                    {filteredFields.map((field) => (
+                        <li key={field.id}>{field.name}</li>
                     ))}
                 </ul>
             </div>
