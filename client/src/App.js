@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Plot from 'react-plotly.js';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Search from './search';
 import Messenger from './messenger';
@@ -33,11 +33,17 @@ const App = () => {
 
     return (
         <Router>
+            <div class='container container-dark p-y-md'>
+            <div class='header-content'>
+                <h1>Search Field</h1>
+                <h2>Search Field</h2>
+            </div>
+            </div>
             <div className="App">
                 <Messenger
                     message={`${filteredFields.length} fields`}
                 />
-                <img src={logo} className="App-logo" alt="logo" />
+                {/* <img src={logo} className="App-logo" alt="logo" /> */}
                 <Search
                     searchQuery={searchQuery}
                     setSearchQuery={setSearchQuery}
@@ -54,7 +60,7 @@ const App = () => {
                             lon: pdlData['lon'],
                         },
                     ]}
-                    layout={ {width: 3200, height: 2400, title: 'A Fancy Plot'} }
+                    // layout={ {width: 3200, height: 2400, title: 'A Fancy Plot'} }
                 />
                 <ul>
                     {filteredFields.map((field) => (
