@@ -49,6 +49,7 @@ input {
   width: 227px;
   margin: 4px;
   padding: 4px;
+  padding-left: 10px;
   font-size: 24px;
   top:10px;
   left:10px;
@@ -74,8 +75,17 @@ button {
   /* transform: translateY(50px); */
   animation: slideUp .8s ease-in-out  forwards 1s;
 }
-.plot {
-  z-index: -999;
-  
-}
 
+.metricSelect {
+  position: absolute;
+  height: 40px;
+  width: 240px;
+  margin: 4px;
+  padding: 4px;
+  padding-left: 10px;
+  font-size: 24px;
+  top:60px;
+  left:10px;
+  border-radius: 50px;
+  border: 1px solid var(#BF307F);
+}

@@ -8,10 +8,15 @@ import Messenger from './messenger';
 
 const fields = [
     { id: '1', name: 'Medical Devices' },
-    { id: '2', name: 'Medical Practice' },
-    { id: '3', name: 'Pharmaceuticals' },
-    { id: '4', name: 'Hospital & Wellness' },
+    { id: '2', name: 'Pharmaceuticals' },
 ];
+
+const colors = {
+    "overall_score": "YlGnBu",
+    "score_competition": "Portland",
+    "score_saturation": "RdBu",
+    "score_growth_rate": "Blackbody"
+};
 
 const filterField = (fields, query) => {
     if (!query) {
@@ -29,6 +34,7 @@ const App = () => {
     const query = new URLSearchParams(search).get('s');
     const [searchQuery, setSearchQuery] = useState(query || '');
     const [pdlData, setPdlData] = useState('');
+    const [metric, setMetric] = useState('');
 
     const [width, setWidth]   = useState(window.innerWidth);
     const [height, setHeight] = useState(window.innerHeight);
@@ -66,12 +72,13 @@ const App = () => {
                             // text: pdlData['names'],
                             lat: pdlData['lat'],
                             lon: pdlData['lon'],
-                            z: pdlData['scores'],
+                            z: pdlData[metric],
                             hoverinfo: 'skip',
-                            showscale: false
+                            coloraxis: 'coloraxis',
+                            showscale: false,
                         },
                     ]}
-                    layout = {{mapbox: {style: 'light'}, style: "outdoors", width: width, height: height, margin: {t: 0, b: 0, l: 0, r: 0}}}
+                    layout = {{mapbox: {style: 'light'}, coloraxis: {colorscale: colors[metric]}, style: "outdoors", width: width, height: height, margin: {t: 0, b: 0, l: 0, r: 0}}}
                     config = {{mapboxAccessToken: "pk.eyJ1IjoiYW5jaGFsc2luaGEiLCJhIjoiY2tuNWwwZW8xMDU5djJvcDd6OG9jb29vcSJ9.FbawMaKUirZV9t57sHHCog"}}
                 />
                 <Search
@@ -79,6 +86,8 @@ const App = () => {
                     setSearchQuery={setSearchQuery}
                     pdlData={pdlData}
                     setPdlData={setPdlData}
+                    metric={metric}
+                    setMetric={setMetric}
                 />
                 
                 {/* <ul>

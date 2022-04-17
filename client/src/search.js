@@ -1,10 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 
-const SearchBar = ({ searchQuery, setSearchQuery, pdlData, setPdlData }) => {
+const SearchBar = ({ searchQuery, setSearchQuery, pdlData, setPdlData, metric, setMetric }) => {
     const navigate = useNavigate();
     const onSubmit = (e) => {
         navigate(`?s=${searchQuery}`);
         e.preventDefault();
+    };
+    const handleChange = (e) => {
+        console.log(e.target.value);
+        setMetric(e.target.value);
     };
 
     return (
@@ -39,17 +43,29 @@ const SearchBar = ({ searchQuery, setSearchQuery, pdlData, setPdlData }) => {
                       })
                       .then(response => response.json())
                       .then(response => {
+                        setMetric("overall_score");
                         const names = response.map(e => e['name']);
                         const lats = response.map(e => e['lat']);
                         const lons = response.map(e => e['lon']);
-                        const scores = response.map(e => e['competition_score']);
-                        pdlData = {names: names, lat: lats, lon: lons, scores: scores};
+                        const overall_scores = response.map(e => e['overall_score']);
+                        const competition_scores = response.map(e => e['score_competition']);
+                        const saturation_scores = response.map(e => e['score_saturation']);
+                        const growth_rate_scores = response.map(e => e['score_growth_rate']);
+                        pdlData = {names: names, lat: lats, lon: lons, overall_scores: overall_scores, competition_scores: competition_scores, saturation_scores: saturation_scores, growth_rate_scores: growth_rate_scores};
                         setPdlData(pdlData);
                       })
                 }
             }>Search
             
             </button>
+            
+            <select value={metric} onChange={handleChange} class="metricSelect">
+                <option value="overall_score">Overall</option>
+                <option value="score_competition">Competition</option>
+                <option value="score_saturation">Saturation</option>
+                <option value="score_growth_rate">Growth Rate</option>
+            </select>
+
         </form>
     );
 };
