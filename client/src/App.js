@@ -46,23 +46,18 @@ const App = () => {
 
     return (
         <Router>
-            <div class='container container-dark p-y-md'>
+            {/* <div class='container container-dark p-y-md'>
             <div class='header-content'>
                 <h1>Search Field</h1>
                 <h2>Search Field</h2>
             </div>
-            </div>
+            </div> */}
             <div className="App">
                 <Messenger
                     message={`${filteredFields.length} fields`}
                 />
                 {/* <img src={logo} className="App-logo" alt="logo" /> */}
-                <Search
-                    searchQuery={searchQuery}
-                    setSearchQuery={setSearchQuery}
-                    pdlData={pdlData}
-                    setPdlData={setPdlData}
-                />
+                <div class='plot'>
                 <Plot
                     data={[
                         {
@@ -79,11 +74,19 @@ const App = () => {
                     layout = {{mapbox: {style: 'light'}, style: "outdoors", width: width, height: height, margin: {t: 0, b: 0, l: 0, r: 0}}}
                     config = {{mapboxAccessToken: "pk.eyJ1IjoiYW5jaGFsc2luaGEiLCJhIjoiY2tuNWwwZW8xMDU5djJvcDd6OG9jb29vcSJ9.FbawMaKUirZV9t57sHHCog"}}
                 />
-                <ul>
+                </div>
+                <Search
+                    searchQuery={searchQuery}
+                    setSearchQuery={setSearchQuery}
+                    pdlData={pdlData}
+                    setPdlData={setPdlData}
+                />
+                
+                {/* <ul>
                     {filteredFields.map((field) => (
                         <li key={field.id}>{field.name}</li>
                     ))}
-                </ul>
+                </ul> */}
             </div>
         </Router>
     );

@@ -44,14 +44,25 @@ ul {
 }
 
 input {
+  position: absolute;
   height: 27px;
+  width: 227px;
   margin: 4px;
   padding: 4px;
   font-size: 24px;
+  top:10px;
+  left:10px;
 }
 button {
-  height: 40px;
+  position: absolute;
+  height: 39px;
   margin: 4px;
   padding: 4px;
   font-size: 24px;
+  top:10px;
+  left:250px;
+}
+.plot {
+  z-index: -999;
+  
 }
