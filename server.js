@@ -6,7 +6,7 @@ const port = process.env.PORT || 3001;
 const app = express()
 app.use(express.json())
 
-const db_path = 'data_full_v2.db';
+const db_path = 'scored_data_sample.db';
 
 db = new sqlite3.Database(db_path, (err) => {
   if (err) {
@@ -17,14 +17,10 @@ db = new sqlite3.Database(db_path, (err) => {
 })
 
 app.get('/latlong', (req, res) => {
-  // request fields
-  // - industry name
-  
-  // return list of lat and list of long
 
   industry_name = req.query.industry
-  
-  db.all(`SELECT name, lat, lon FROM data_full_v2 WHERE industry = \"${industry_name}\"`, function(err, rows) {
+
+  db.all(`SELECT name, lat, lon, competition_score FROM scored_data_sample WHERE industry = \"${industry_name}\"`, function(err, rows) {
     if (err) throw err;
     res.send(rows);
   })
