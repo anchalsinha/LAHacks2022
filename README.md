@@ -3,7 +3,7 @@
 
 Contributors:
 Anchal Sinha,
-Lea Alcantara,
+Lea Alcantara, 
 Andrea Casassa,
 Yuheng He
 
